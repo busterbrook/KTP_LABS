@@ -1,0 +1,86 @@
+Лабораторная работа №2
+
+1)Создал начальную страницу сайта.
+	django-admin.py startproject helloworld
+
+2) Добавили некоторый текст 
+	def home(request):
+	return HttpResponse(u'Привет, Мир!', mimetype="text/plain")
+
+3) Добавили картинку 
+	<img src="{{ STATIC_URL }}img/dpb-logo.png" />
+
+4) Добавили таблицу 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Привет, Мир!</title>
+</head>
+<body>
+<h1>Привет, Мир!</h1>
+<h2>Это учебный сайт, с его помощью будут изучены технологии
+python/django, html/css.</h2>
+<h3>Как видите, здесь используются заголовки различных
+уровней.</h3>
+<p>Здесь есть маркированный список:</p>
+<ul>
+<li>Элемент 1;</li>
+<li>элемент 2;</li>
+<li>элемент 3;</li>
+<li>последний элемент.</li>
+</ul>
+<p>И нумерованный список:</p>
+<ol>
+<li>Элемент 1;</li>
+
+<li>элемент 2;</li>
+<li>элемент 3;</li>
+<li>последний элемент.</li>
+</ol>
+<p>И даже таблица:</p>
+<table border="1">
+<thead>
+<tr>
+<th>Столбик 1</th>
+<th>Столбик 2</th>
+<th>Столбик 3</th>
+</tr>
+</thead>
+<tr>
+<td>Строка 1 Столбец 1</td>
+<td>Строка 1 Столбец 2</td>
+<td>Строка 1 Столбец 3</td>
+</tr>
+<tr>
+<td>Строка 2 Столбец 1</td>
+<td>Строка 2 Столбец 2</td>
+<td>Строка 2 Столбец 3</td>
+</tr>
+<tr>
+<td>Строка 3 Столбец 1</td>
+<td>Строка 3 Столбец 2</td>
+<td>Строка 3 Столбец 3</td>
+</tr>
+</table>
+</body>
+</html>
+
+5) Изменили цвет фона
+body {
+background: #1abc9c;
+font-family: Tahoma, Arial, sans-serif;
+color: #333;
+}
+table {
+border-collapse: collapse;
+}
+p, h4 {
+font-size: 22px;
+margin-bottom: 0;
+}
+ul, ol {
+margin: 0
+}
+table tr td {
+padding: 5px
+}
