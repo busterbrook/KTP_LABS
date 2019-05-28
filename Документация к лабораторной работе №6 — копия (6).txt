@@ -1,0 +1,105 @@
+Лабораторная раюота №6
+
+1)Создание формы, шаблона и представления для регистрации.
+
+from django.conf.urls import patterns, include, url
+
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'blog.views.home', name='home'),
+    # url(r'^blog/', include('blog.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    url(r'^admin/', include(admin.site.urls)),
+	url(r'^$','articles.views.archive',name='archive'),
+	url(r'^article/(?P<article_id>\d+)$','articles.views.get_article',name='get_article'),
+)
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Статья</title>
+		<link rel="stylesheet" href="{{STATIC_URL}}css/article.css">
+	</head>
+	<body class="article">
+		<div class="header">
+			<img src="{{STATIC_URL}}img/dpb-logo.png"/>
+			<a href=http://127.0.0.1:8000/>Все статьи</a>
+		</div>
+		<div class="archive">
+			<div class="one-post">
+				<h2 class="post-title">{{post.title}}</h2>
+				<div class="article-info">
+					<div class="article-author">{{post.author.username}}</div>
+					<div class="article-created-date">{{post.created_date}}</div>
+				</div>
+				<p class="article-text">{{post.text}}</p>
+			</div>
+		</div>
+	</body>
+</html>
+
+2)Создать для обеих типов страниц стиль «.css»
+
+body
+{
+	background:#4a76a8;
+	font-family:Times,Arial,sans-serif;
+	color:#ffffff;
+}
+.archive .header img
+{
+	display:block;
+	width:400px;
+	height:100px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.archive
+{
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.post-title
+{
+	font-size:20pt;
+	color:#ffffff;
+}
+.article-author
+{
+	font-size:15pt;
+	width:80%;
+	float:left;
+}
+.article-created-data
+{
+	text-align:right;
+}
+.article a
+{
+	color:#ffffff;
+	text-align:right;
+	margin-left:25%;
+	font-size:15pt;
+}
+.article .header img
+{
+	display:block;
+	width:400px;
+	height:100px;
+	margin-right:auto;
+	margin-left:20%;
+	float:left;
+}
+.article .post-title
+{
+	margin-top:10%;
+}
