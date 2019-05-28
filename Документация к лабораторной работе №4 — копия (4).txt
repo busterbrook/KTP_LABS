@@ -1,0 +1,52 @@
+Лабораторная раюота №4
+
+1)Создали страницу определенной записи
+
+from django.http import Http404
+def get_article(request, article_id):
+try:
+post = Article.objects.get(id=article_id)
+return render(request, 'article.html', {"post": post})
+except Article.DoesNotExist:
+raise Http404
+
+2)Произвели верстку обеих страниц в соответсвии с макетом 
+
+2.1)Сначала задали общий стиль страницы
+
+background: #1abc9c;
+font-family: Tahoma, Arial, sans-serif;
+color: #ffffff;
+
+2.2)Горизонтальное выравнивание катинки
+
+.header img {
+display: block;
+width: 318px;
+margin-left: auto;
+margin-right: auto;
+}
+
+2.3)Выравнивание всех статей на главной страницы по центру
+
+.archive {
+width: 960px;
+margin-left: auto;
+margin-right: auto;
+}
+
+2.4)Установка цвета шрифта
+
+.post-title a {
+color: #ffffff;
+}
+
+2.5)Установка имени автора и времени поста на олдин уровень
+
+.article-author {
+width: 50%;
+float: left;
+}
+.article-created-date {
+text-align: right;
+}
