@@ -1,0 +1,49 @@
+Лабоаторная работа №5
+
+1) Создали форму и представление для нового поста
+
+1.1)Создание в базе данных новой записи
+
+if request.method == "POST":
+# обработать данные формы, если метод POST
+form = {
+'text': request.POST["text"],
+'title': request.POST["title"]
+}
+# в словаре form будет храниться информация, введенная пользователем
+if form["text"] and form["title"]:
+# если поля заполнены без ошибок
+Article.objects.create(text=form["text"],
+title=form["title"],
+author=request.user)
+return redirect('get_article', article_id=article.id)
+# перейти на страницу поста
+else:
+# если введенные данные некорректны
+form['errors'] = u"Не все поля заполнены"
+return render(request, 'create_post.html', {'form': form})
+else:
+# просто вернуть страницу с формой, если метод GET
+return render(request, 'create_post.html', {})
+
+1.2) Создание шаблона с формой
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Django Public Blog - создать статью</title>
+</head>
+<body>
+<div class="content">
+<h1>Написать статью</h1>
+<form method="POST">{% csrf_token %}
+<input type="text" name="title" placeholder="Название
+статьи" value="{{ form.title }}">
+<textarea name="text" placeholder="Текст
+статьи">{{ form.text }}</textarea>
+<input type="submit" value="Сохранить">
+</form>
+{{ form.errors }}
+</div>
+</body>
+</html>
