@@ -1,0 +1,48 @@
+Лабораторная работа №8
+
+1) Изучили библиотеки jQuery
+
+2)Добавили подсветку поста на сайте
+
+<div class="one-post">
+<div class="post-managment">
+<h2 class="post-title"><a href="/article/
+{{ post.id }}">{{ post.title }}</a></h2>
+<p class="fold-button">Свернуть</p>
+</div>
+<div class="article-info">
+<div class="article-author">{{ post.author.username }}</div>
+<div class="article-created-date">{{ post.created_date }}</div>
+</div>
+<p class="article-text">{{ post.get_excerpt }}</p>
+<div class="one-post-shadow"></div>
+</div>
+
+$(document).ready(function(){
+$('.one-post').hover(function(event){
+$(event.currentTarget).find('.one-post-shadow').animate({opacity:
+'0.1'}, 300);
+}, function(event){
+$(event.currentTarget).find('.one-post-shadow').animate({opacity: '0'},
+300);
+})
+});
+
+3) Добавили увеличение картинки логотипа
+
+$(document).ready(function(){
+    $('.one-post').hover(function(event){
+	$(event.currentTarget).find('.one-post-shadow').animate({opacity:
+'0.2'}, 300);
+    }, function(event){
+	$(event.currentTarget).find('.one-post-shadow').animate({opacity: '0'}, 
+300);
+    });
+	$('.header>img').hover(function(event){
+		var NewWidth=parseInt($(this).css('width').replace('px',''))+50+'px';
+		$(this).animate({width:NewWidth},300);
+	},function(event){
+		var NewWidth=parseInt($(this).css('width').replace('px',''))-50+'px';
+		$(this).animate({width:NewWidth},300);
+	})
+})
