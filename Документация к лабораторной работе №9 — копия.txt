@@ -1,0 +1,21 @@
+Лабораторная раюота №9
+
+1) Дальше изучили библиотеки jQuery
+
+2)Добавили эффект параллакса для главной страницы
+
+$(document).ready(function()
+{
+	var scrolled=0;
+	var $parallaxElements=$('.paralaks img');
+	var yPos;
+	$(window).scroll(function()
+	{
+		scrolled=$(window).scrollTop();
+		for (var i=0;i<$parallaxElements.length;i++)
+		{
+			yPos=(scrolled*1*(i+1));
+			$parallaxElements.eq(i).css({top:yPos});
+		}
+	});
+});
